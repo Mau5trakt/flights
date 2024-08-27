@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+Lista de aeropuertos
+
+{% endblock %}
+
+{% block content %}
+<h1> Aeropuertos </h1>
+<div class="container">
+    <table>
+    <tr>
+      <th>id</th>
+      <th>Ciudad</th>
+      <th>Codigo</th>
+    </tr>
+   
+    {% for aeropuerto in airports  %}
+    <tr>
+        <th>{{ aeropuerto.id }}</th>
+        <th>{{ aeropuerto.city }}</th>
+        <th>{{ aeropuerto.code }}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+{% endblock %}

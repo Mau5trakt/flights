@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Inicio
+
+{% endblock %}
+
+{% block content %}
+<h1> Inicio </h1>
+<div class="container">
+    <a href="{% url 'aeropuertos' %}">Lista de aeropuertos </a>
+    <a href="">Lista de vuelos </a>
+
+</div>
+
+<a href="{% url 'logout_view' %}">Log Out</a>
+{% endblock %}

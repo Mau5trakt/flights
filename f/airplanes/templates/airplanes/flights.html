@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Lista de vuelos
+{% endblock  %}
+
+
+{% block content %}
+<h1> Aeropuertos </h1>
+<div class="container">
+    <table>
+    <tr>
+      <th>id</th>
+      <th>Origen</th>
+      <th>Destino</th>
+      <th>Duracion</th>
+    </tr>
+   
+    {% for vuelo in flights  %}
+    <tr>
+        <th>{{ vuelo.id }}</th>
+        <th>{{ vuelo.origin }}</th>
+        <th>{{ vuelo.destination }}</th>
+        <th>{{ vuelo.duraton }}</th>
+        
+        
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+{% endblock %}
