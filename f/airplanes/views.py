@@ -33,6 +33,23 @@ def login_view(request):
     else:
         return render(request, "airplanes/users.html")
     
+def register(request):
+
+    if request.POST:
+        user_form = UserRegisterForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.set_password(
+                user_form.cleaned_data['password']
+            )
+            new_user.save()
+
+            return redirect("login_view")
+
+    else:
+        user_form = UserRegisterForm()
+    return render(request, 'airplanes/register.html', {'form': user_form})
+
 def logout_view(request):
     logout(request)
     return redirect("login_view")
@@ -54,4 +71,6 @@ def add_airport(request):
 
 
     return render(request, "airplanes/agregar.html", {"form": form})
+
+
 

@@ -8,5 +8,6 @@ urlpatterns = [
     path("aeropuertos", aeropuertos, name="aeropuertos"),
     path("login", login_view, name="login_view"),
     path("logout", logout_view, name="logout_view"),
-    path("agregar", add_airport, name="agregar")
+    path("agregar", add_airport, name="agregar"),
+    path("registrar", register, name="register_view")
 ]

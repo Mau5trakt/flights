@@ -1,5 +1,7 @@
 from django import forms
 from .models import *
+from django.contrib.auth.models import User
+
 class AirportForm(forms.ModelForm):
     class Meta:
         model = Airport
@@ -22,3 +24,20 @@ class AirportForm(forms.ModelForm):
 
         if city.lower() == "masaya":
             raise forms.ValidationError("Masaya no tiene aeropuerto")
+
+class UserRegisterForm(forms.ModelForm):
+    password = forms.CharField(label="Introduce tu contraseña", widget=forms.PasswordInput)
+    confirmation = forms.CharField(label="Confirma tu contraseña", widget=forms.PasswordInput)
+
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+    def clean_confirmation(self):
+        cd = self.cleaned_data
+        # 'DROP DATABASE'
+        
+        if cd['password'] != cd['confirmation']:
+            raise forms.ValidationError(" Las contraseñas no coinciden ") 
+
